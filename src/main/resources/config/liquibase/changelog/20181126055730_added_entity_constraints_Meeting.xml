@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Meeting.
+    -->
+    <changeSet id="20181126055730-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="meeting_room_id"
+                                 baseTableName="meeting"
+                                 constraintName="fk_meeting_meeting_room_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="meeting_room"/>
+
+        <addForeignKeyConstraint baseColumnNames="meetings_id"
+                                 baseTableName="meeting_meeting_room_function"
+                                 constraintName="fk_meeting_meeting_room_function_meetings_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="meeting"/>
+        <addForeignKeyConstraint baseColumnNames="meeting_room_functions_id"
+                                 baseTableName="meeting_meeting_room_function"
+                                 constraintName="fk_meeting_meeting_room_function_meeting_room_functions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="meeting_room_function"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -3,17 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.videon.admin</groupId>
-    <artifactId>admin</artifactId>
+    <groupId>cn.videon.meeting.voice</groupId>
+    <artifactId>meeting</artifactId>
     <version>0.0.1</version>
     <packaging>war</packaging>
-    <name>Admin</name>
+    <name>Meeting</name>
 
 
     <properties>
         <!-- Build properties -->
         <maven.version>3.0.0</maven.version>
-        <start-class>cn.videon.admin.AdminApp</start-class>
+        <start-class>cn.videon.meeting.voice.MeetingVoiceApp</start-class>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

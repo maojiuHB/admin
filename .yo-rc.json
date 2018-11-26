@@ -1,0 +1,33 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "cn.videon.meeting.voice"
+        },
+        "jhipsterVersion": "5.4.2",
+        "applicationType": "monolith",
+        "baseName": "meeting-voice",
+        "packageName": "cn.videon.meeting.voice",
+        "packageFolder": "cn/videon/meeting/voice",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "NGY5ZjcxY2I2ODAzZDVkMDk5NzNiM2I5MDVmZDdlYWI5ODVhOGY3MzEzNWZhODM5YzRlOWU1MjAzOGMxOWYzZjk1OGMwM2YxNDBjMjU2MGE3YzI0M2QxNWVkY2U2ODU5NDJiZmE5NDg2N2EzZGY3MGRlMTI3ODA0NTk2YjViMTg=",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "skipCommitHook": true,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "vn",
+        "enableTranslation": false
+    }
+}

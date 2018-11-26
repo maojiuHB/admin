@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity UserLevel.
+    -->
+    <changeSet id="20181126055316-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_level"
+                                 constraintName="fk_user_level_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vn_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_levels_id"
+                                 baseTableName="user_level_level"
+                                 constraintName="fk_user_level_level_user_levels_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_level"/>
+        <addForeignKeyConstraint baseColumnNames="levels_id"
+                                 baseTableName="user_level_level"
+                                 constraintName="fk_user_level_level_levels_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="level"/>
+        
+    </changeSet>
+</databaseChangeLog>

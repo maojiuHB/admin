@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Meeting.
+    -->
+    <changeSet id="20181126055313-1" author="jhipster">
+        <createTable tableName="meeting" remarks="会议 name：会议名字 recorder：记录者 compere：主持人 participator：参会人 startTime：开始时间 endTime：结束时间 result：会议结果 voiceInfo：话筒信息 level：会议级别 type：会议类型">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="recorder" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="compere" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="participator" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="start_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="end_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="result" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="voice_info" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="vn_level" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="vn_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="meeting_room_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="level_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="meeting_room_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="meeting" columnName="start_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="meeting" columnName="end_time" columnDataType="datetime"/>
+        
+        <createTable tableName="meeting_meeting_room_function">
+            <column name="meeting_room_functions_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="meetings_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="meetings_id, meeting_room_functions_id" tableName="meeting_meeting_room_function"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

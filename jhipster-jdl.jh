@@ -1,0 +1,172 @@
+/**
+ *会议室
+ *name：会议室名称
+ *maxPeople：最大人数
+ *imageUrl：会议室图片
+ *status：会议室状态
+*/
+entity MeetingRoom {
+    name String,
+    maxPeople Integer,
+    imageUrl String,
+    status Status
+}
+
+/**
+ *状态信息
+ *NORMAL：正常
+ *DISABLE：不可用
+ *MAINTENANCE：维修中
+*/
+enum Status {
+	NORMAL, DISABLE, MAINTENANCE
+}
+
+/**
+ *会议
+ *name：会议名字
+ *recorder：记录者
+ *compere：主持人
+ *participator：参会人
+ *startTime：开始时间
+ *endTime：结束时间
+ *result：会议结果
+ *voiceInfo：话筒信息
+ *level：会议级别
+ *type：会议类型
+*/
+entity Meeting {
+     name String,
+     recorder String,
+     compere String,
+     participator String,
+     startTime Instant,
+     endTime Instant,
+     result String,
+     voiceInfo String,
+     level String,
+     type String,
+     status Status
+}
+
+
+/**
+*数据字典：包括楼宇，会议类型，会议桌，会议室类型
+*name：名称
+*description：描述
+*type：类型
+*status：状态
+*/
+entity DataDictionary {
+	name String,
+    description String,
+    datatype DataType
+}
+
+/**
+ *数据字典信息
+ *BUILD：建筑物
+ *MEETING：会议
+ *TABLE：桌型
+ *MEETINGROOM：会议室
+*/
+enum DataType {
+	BUILD, MEETING, TABLE, MEETINGROOM
+}
+
+/**
+ *级别：包含会议室级别和会议级别
+ *name：级别名称
+ *description：级别描述
+ *type：类型
+ *status：级别状态
+*/
+entity Level {
+    name String,
+    description String,
+    type String
+}
+
+/**
+ *用户级别中间表
+*/
+entity UserLevel {
+
+}
+
+
+/**
+ *会议室功能
+*/
+entity MeetingRoomFunction {
+    name String,
+    description String
+}
+
+/**
+ *修改记录
+ *time：修改时间
+ *result：修改结果
+*/
+entity Modification {
+	time Instant,
+    result String
+}
+
+/**
+ *话筒
+ *name：话筒名称
+ *ip：话筒ip
+ *status：话筒状态
+*/
+entity VoiceTube {
+    name String,
+    ip String,
+    status Status
+}
+
+
+/**
+ *词汇
+ *word：词汇
+ *wordsType：词汇类型
+*/
+entity Word {
+    word String,
+    wordsType WordsType
+}
+
+/**
+ *词语类型
+ *OPTIMIZE：优化词
+ *SENSITIVE：敏感词
+*/
+enum WordsType {
+	OPTIMIZE, SENSITIVE
+}
+
+
+relationship OneToOne {
+    UserLevel{user} to User
+}
+
+relationship ManyToOne {
+  Modification{user} to User,
+  Modification{meeting} to Meeting,
+  MeetingRoom{level} to Level,
+  Meeting{meetingRoom} to MeetingRoom
+}
+
+relationship ManyToMany {
+   MeetingRoom{meetingRoomFunction} to MeetingRoomFunction,
+   Meeting{meetingRoomFunction} to MeetingRoomFunction,
+   UserLevel{level} to Level 
+}
+
+paginate all with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
